@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Perda de Produção da Colmeia</title>
+</head>
+<body>
+    <h2>Calculadora de Perda de Produção da Colmeia</h2>
+    
+    Temperatura da colmeia (°C):
+    <input type="number" id="inp_temperatura" placeholder="Digite a temperatura">
+    
+    <br></br>
+
+    Produção esperada de mel (kg):
+    <input type="number" id="inp_mel" placeholder="Digite a produção esperada">
+    
+    <br></br>
+
+    <button onclick="calcularPerda()">Calcular</button>
+    
+    <br>
+    
+    <div id="div_msg"></div>
+  
+    <script>
+        function calcularPerda() {
+            var temperatura = Number(inp_temperatura.value);
+            var mel = Number(inp_mel.value);
+            var perdaPercentual = 0;
+
+            
+            if (temperatura < 33) {
+                perdaPercentual = 40; // Média de perda de 50% devido ao frio
+                div_msg.innerHTML = `A produtividade caiu devido ao frio.<br>
+                                    As abelhas gastam energia para aquecer a colmeia, reduzindo a coleta de néctar.`;
+            } else if (temperatura > 36) {
+                perdaPercentual = 60; // Média de perda de 50% devido ao calor excessivo
+                div_msg.innerHTML = `A produtividade caiu devido ao calor excessivo.<br>
+                                    As abelhas gastam mais tempo ventilando a colmeia do que coletando recursos.`;
+            } else {
+                div_msg.innerHTML = `A temperatura está ideal! A produtividade está no nível máximo.`;
+            }
+            
+            var perdaTotal = (perdaPercentual / 100) * mel;
+            var total = mel - perdaTotal;
+            
+            div_msg.innerHTML += `<br><br>
+            <b>Produção esperada:</b> ${mel} kg<br>
+            <b>Perda estimada:</b> ${perdaTotal} kg (${perdaPercentual}%)<br>
+            <b>Produção final estimada:</b> ${total} kg`;
+        }
+    </script>
+</body>
+</html>
