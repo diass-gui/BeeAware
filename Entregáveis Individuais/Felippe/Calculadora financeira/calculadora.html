@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <i><b>Insira a temperatura média das colmeias:</b></i>
+<input type="text" id="input_colmeias">
+<BR></BR>
+<i><b>Insira a produção trimestral:</b></i>
+ <BR></BR>
+<b>mês 1°</b>
+<input id="input_mes1" type="text">
+<br>
+<b>mês 2°</b>
+<input id="input_mes2" type="text">
+<br>
+<b>mês 3°</b>
+<input id="input_mes3" type="text">
+<BR></BR>
+<i><b>insira a produção atual</b></i>
+<br>
+<input id="input_prodAtual" type="text">
+<button onclick="calculo()" >Analisar desempenho</button>
+<BR></BR>
+<div id="div_msg1"></div>
+</body>
+
+</html>
+<script>
+function calculo() {
+var mes_1 = Number(input_mes1.value);
+var mes_2 = Number(input_mes2.value);
+var mes_3 = Number(input_mes3.value);
+var prodAtual = Number(input_prodAtual.value);
+
+var Resul_1 = 0;
+var resul_2 = 0;
+var Resul_3 = 0;
+var Resul_4 = 0;
+var Resul_Media = (mes_1 + mes_2 + mes_3)/3;
+var temp = Number(input_colmeias.value)
+var alerta = 0;
+
+//Calculo mes 1//
+if (prodAtual > mes_1) { 
+  var sub = prodAtual - mes_1
+  Resul_1 = (sub / mes_1)* 100  + `% maior que o`}
+
+if (prodAtual < mes_1) {
+  var sub = mes_1 - prodAtual
+  Resul_1 = (sub / mes_1)* 100  + `% menor que o`}
+
+if (prodAtual == mes_1) {
+  Resul_1 = `idêntica ao`
+}
+
+//Calculo mes 2//
+if (prodAtual > mes_2) { 
+  var sub = prodAtual - mes_2
+  Resul_2 = (sub / mes_2)* 100  + `% maior que o`}
+
+if (prodAtual < mes_2) {
+  var sub = mes_2 - prodAtual
+  Resul_2 = (sub / mes_2)* 100  + `% menor que o`}
+
+if (prodAtual == mes_2) {
+  Resul_2 = `idêntica ao`
+}
+
+//Calculo mes 3//
+if (prodAtual > mes_3) { 
+  var sub = prodAtual - mes_3
+  Resul_3 = (sub / mes_3)* 100 + `% maior que o`}
+
+if (prodAtual < mes_3) {
+  var sub = mes_3 - prodAtual
+  Resul_3 = (sub / mes_3)* 100  + `% menor que o`}
+
+if (prodAtual == mes_3) {
+  Resul_3 = `idêntica ao`
+}
+ 
+//Calculo geral//
+if (prodAtual > Resul_Media) { 
+  var sub = prodAtual - Resul_Media
+  Resul_4 = (sub / Resul_Media)* 100 
+}
+
+if (prodAtual < Resul_Media) {
+  var sub = Resul_Media - prodAtual
+  Resul_4 = (sub / Resul_Media)* 100  + `% menor`}
+
+if (prodAtual == Resul_Media) {
+  Resul_4 = `idêntico`
+}
+
+if (temp <= 9) {
+alerta = `<i style="color: red;"> Temperatura crítica</i>`}
+ 
+if ( temp > 9) { 
+  if (temp <= 30  ) {
+alerta = `<i style="color: orange;">Baixa produção</i>`
+}}
+
+if (temp > 30) {
+  if (temp <= 35){
+alerta = `<i style="color: DarkGreen;">Excelente produção</i>`
+}}
+
+if (temp > 35) {
+  if (temp <= 38){
+alerta = `<i style="color: green;">boa produção</i>`
+}}
+
+if (temp > 38) {
+  if (temp <= 40 ){
+alerta = `<i style="color: green;">Produção lenta</i>`
+}}
+
+if (temp > 40) {
+alerta = `<i style="color: DarkRed;">Temperatura crítica para produção</i>`
+}
+
+div_msg1.innerHTML = `Relatório da atual produção: <br> ${Resul_1} 1° mês <br> ${Resul_2} 2° mês <br> ${Resul_3}
+ 3° mês <br> tendo um desempenho ${Resul_4} em relação a média trimestral <BR></BR> Status Sensor: ${alerta}`;
+}
+</script>
