@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira | BeeAware</title>
+</head>
+<body>
+    <div id="div_msg">
+    <h1>Calculadora Financeira - BeeAware</h1><hr>
+
+    <h2>Olá usuário, seja bem vindo a simulação financeira da BeeAware!</h2>
+
+    <h3>Informe o seu nome/nome da sua empresa: </h3>
+    <input type="text" id="input_nome"><br>
+
+    <h3>Informe a quantidade de colméias que você possui: </h3>
+    <input type="text" id="input_qtdColmeia"><br>
+
+    <h3>Informe a quantidade de mel que as suas colmeias produzem(em litros): </h3>
+    <input type="text" id="input_qtdMelProduzido"><br>
+
+    <h3> Informe o valor do Litro do mel que você produz: </h3>
+    <input type="text" id="input_valorLitroMel"><br>
+
+    <h3> Informe a temperatura média da sua produção: </h3>
+    <input type="text" id="input_temperaturaAtual"><br><br>
+
+    <button onclick="SimulacaoFinanceira()">Realize a sua simulação!</button>
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    function SimulacaoFinanceira() {
+
+    var nome = input_nome.value;
+    var qtdColmeia = Number(input_qtdColmeia.value);
+    var qtdMelProduzido = Number(input_qtdMelProduzido.value);
+    var valorLitroMel = Number(input_valorLitroMel.value);
+    var TempAtual = Number(input_temperaturaAtual.value);
+
+    var valorProducao = valorLitroMel * qtdMelProduzido;
+    var totalProducao = valorProducao * qtdColmeia;
+
+    if(TempAtual < 32) {
+        div_msg.innerHTML=`Olá, ${nome}!<br>
+    ${qtdColmeia} Quantidade Colmeia<br>
+    ${qtdMelProduzido} Quantidade Mel produzido (em Litros)<br>
+    ${valorLitroMel} Valor do Litro do Mel<br>
+    ${valorProducao} Valor da produção<br>
+    ${totalProducao} total Produção<br>
+    ${totalProducao = totalProducao - (totalProducao * 0.4)} prejuizo de 40%<br>
+    ${totalProducao = totalProducao - (totalProducao * 0.8)} prejuizo de 80%`
+    }
+
+    
+
+    }
+
+</script>
