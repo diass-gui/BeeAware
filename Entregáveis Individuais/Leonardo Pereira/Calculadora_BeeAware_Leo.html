@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - BeeAware</title>
+</head>
+<body>
+    <h2>Simulador Financeiro</h2>
+    
+    Produção de mel (kg): <input id="input_mel" type="number"><br><br>
+    Preço por kg (R$): <input id="input_preco" type="number"><br><br>
+    Temperatura média da colmeia (°C): <input id="input_temp" type="number"><br><br>
+    
+    <button onclick="CalcularLucro()">Calcular</button>
+    <br><br>
+    
+    <div id="div_resultado"></div>
+
+    <script>
+        function CalcularLucro() {
+            var mel = Number(input_mel.value);
+            var preco = Number(input_preco.value);
+            var temp = Number(input_temp.value);
+            
+            var receita = mel * preco;
+            var ajuste = 0;
+            var alerta = "";
+            
+            if (temp < 32) {
+                ajuste = receita * -0.20;
+                alerta = "Temperatura baixa reduz a produção e o lucro em 20%.";
+            } else if (temp <= 36) {
+                alerta = "Temperatura ideal! Produção sem perdas.";
+                
+            } else if (temp <= 40){
+                ajuste = receita * -0.35;
+                alerta = "Temperatura alta reduz a produção e o lucro em 35%.";
+            } else {
+                ajuste = receita * -0.70;
+                alerta = "Temperatura alta reduz a produção e o lucro em 70%.";
+            }
+            
+            var lucro = receita + ajuste;
+            
+            div_resultado.innerHTML = `Lucro estimado: R$ ${lucro} <br><br> ${alerta}`;
+        }
+    </script>
+</body>
+</html>
