@@ -12,11 +12,11 @@ As mudanças climáticas têm se tornado uma preocupação global, impactando di
 
 ## Objetivo
 
-•	Monitoramento térmico em tempo real: Desenvolver um sistema de sensores para medir continuamente a temperatura interna das colmeias. <br>
-•	Alertas preventivos: Implementar notificações automáticas sobre variações perigosas de temperatura.<br>
-•	Análises históricas: Disponibilizar relatórios detalhados para identificação de padrões e tomada de decisões estratégicas.<br>
-•	Aumento da produtividade: Garantir condições ideais para a produção de mel e outros derivados apícolas.<br>
-•	Preservação da polinização: Manter a eficiência das abelhas na polinização de culturas agrícolas, beneficiando toda a cadeia produtiva.
+•	**Monitoramento térmico em tempo real:** Desenvolver um sistema de sensores para medir continuamente a temperatura interna das colmeias. <br>
+•	**Alertas preventivos:** Implementar notificações automáticas sobre variações perigosas de temperatura.<br>
+•	**Análises históricas:** Disponibilizar relatórios detalhados para identificação de padrões e tomada de decisões estratégicas.<br>
+•	**Aumento da produtividade:** Garantir condições ideais para a produção de mel e outros derivados apícolas.<br>
+•	**Preservação da polinização:** Manter a eficiência das abelhas na polinização de culturas agrícolas, beneficiando toda a cadeia produtiva.
 
 ## Trello
 - **Plataforma de administração:** utilizamos a plataforma Trello para realizar a delegação de tarefas e administração de do que será feito, o que está sendo feito e quais já estão finzalizadas no link: 
