@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+
+    <h1>Calculadora Financeira</h1>
+    <h2>Projeto BeeAware</h2>
+    <br>
+
+    Informe o N° de identificação do apiario (Id):
+    <input type="text" id="input_colmeia"> 
+    <br><br>
+    Insira a temperatura atual do apiario (°C): 
+    <input type="text" id="input_temperatura">
+    <br><br>
+    <button onclick="calcular()">Realizar Calculo</button>
+    <br><br>
+    <div id="div_mensagem"></div>
+
+
+</body>
+</html>
+<script>
+    function calcular(){
+
+        var id = Number(input_colmeia.value);
+        var temp = Number(input_temperatura.value);
+
+
+        if (temp <= 19) {
+        div_mensagem.innerHTML = `Relatorio da atual temperatura: <br> O Apiario com com Id ${id}, se manteve na temperatura de ${temp}°C <br> <p style="color: Darkred;">Status de Produção de Mel: <br> Produção crítica </p>`;
+        } 
+
+        if (temp > 19) { 
+            if (temp <= 31  ) {
+                div_mensagem.innerHTML = `Relatorio da atual temperatura: <br> O Apiario com com Id ${id}, se manteve na temperatura de ${temp}°C <br><br> <p style="color: orange;">Status de Produção de Mel: <br> Baixa produção</p>`;
+            }
+        }
+
+        if (temp >= 32) {
+            if (temp <= 36) {
+                div_mensagem.innerHTML = `Relatorio da atual temperatura: <br> O Apiario com com Id ${id}, se manteve na temperatura de ${temp}°C <br><br> <p style="color: DarkGreen;"> Status de Produção de Mel: <br> Excelente produção</p>`;
+            }
+        }
+
+        if (temp > 36) {
+            if (temp <= 39){
+                div_mensagem.innerHTML = `Relatorio da atual temperatura: <br> O Apiario com com Id ${id}, se manteve na temperatura de ${temp}°C <br><br> <p style="color: orange;"> Status de Produção de Mel: <br> Baixa produção</p>`;
+            }
+        }
+
+        if (temp >= 40) {
+            div_mensagem.innerHTML = `Relatorio da atual temperatura: <br> O Apiario com com Id ${id}, se manteve na temperatura de ${temp}°C <br><br> <p style="color: DarkRed;"> Status de Produção de Mel: <br> Produção crítica</p>`;
+
+        }
+
+    }
+
+</script> 
+
+
+
