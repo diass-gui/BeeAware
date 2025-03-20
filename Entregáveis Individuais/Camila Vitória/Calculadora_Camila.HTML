@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora - BeeAware</h1>
+
+
+
+    <b> Tipos de Espécie: </b>
+    <br>
+    <b>Espécie 1:</b>Apis Mellifera 
+    <br>
+    <b>Espécie 2:</b>Uruçu-Nordestina (Melipona scutellaris)
+    <br>
+    <b>Espécie 3:</b>Jataí (Tetragonisca angustula)
+    <br>
+    <b>Espécie 4:</b>Mandaguari (Melipona quadrifasciata)
+    <br>
+    <b>Espécie 5:</b>Tubi / Tubuna (Scaptotrigona bipunctata)
+<br><br>
+
+<h3>Coloque seus dados:</h3>
+Espécie da Abelha: <input type="text" id="input_especie" placeholder="Espécie da Abelha">
+<br><br>
+Quantidade de Mel: <input type="text" id="input_mel" placeholder="Litros de Mel">
+<br><br>
+Valor do Mel/L: <input type="text" id="input_VarMel" placeholder="Valor por Litro">
+<br><br>
+Quantidade de Colmeias/Gavetas: <input type="text" id="input_colmeias" placeholder="Numero de comeias">
+<br><br>
+Quantidade de Cera produzida: <input type="text" id="input_cera" placeholder="Kg de Cera">
+<br><br>
+Valor de Venda da Cera: <input type="text" id="input_VarCera" placeholder="Valor do Kg">
+<br><br>
+<button onclick="Calcular()">Calcular</button>
+
+<div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+ function Calcular(){
+
+    //Nomeando
+    var Especie = input_especie.value;
+    var Mel = Number (input_mel.value);
+    var Valor_mel = Number(input_VarMel.value);
+    var Colmeias = Number(input_colmeias.value);
+    var Cera = Number(input_cera.value);
+    var Valor_Cera = Number(input_VarCera.value);
+
+    //Calculos
+    var producaoMel = Mel * Valor_mel * Colmeias;
+    var producaoCera = Cera * Valor_Cera
+    
+    //Calculo de Espécie
+    var primeira_esp = Mel - 65
+    var acima_primeira_especie = 41.5 - Mel
+    
+    if (Especie == `Espécie 1`){
+        if (Mel > 65) {
+        div_mensagem.innerHTML +=`Sua produção está acima da média em ${primeira_esp} litro de Mel<br>`
+
+    }}
+
+    if (Especie == `Espécie 1`){
+        if (Mel < 41.5){
+        div_mensagem.innerHTML += `Sua produção está abaixo da média em ${acima_primeira_especie} litro de Mel. <br>`
+    }}
+
+    if (Especie == `Espécie 1`){
+        if (Mel >= 41.5){
+            if(Mel <= 65){
+        div_mensagem.innerHTML += `Sua produção está dentro da média em ${producaoMel} litro de Mel<br>`
+    }}}
+
+ 
+
+    if (Especie == `Espécie 2`){
+         if (Mel > 5 ){
+        div_mensagem.innerHTML += `Sua produção está acima da média em ${Mel - 5} litro de Mel<br>`}
+        else if (Mel < 3 ){
+         div_mensagem.innerHTML += `Sua produção está abaixo da média em ${5 - Mel} litro de Mel<br>`}
+        else {
+            `Sua produção está dentro da média em ${producaoMel} litro de Mel<br>`
+        }
+    }
+        if (Especie == `Espécie 3`){
+         if (Mel > 1.5 ){
+        div_mensagem.innerHTML += `Sua produção está acima da média em ${Mel - 1.5} litro de Mel<br>`}
+        else if (Mel < 0.5 ){
+         div_mensagem.innerHTML += `Sua produção está abaixo da média em ${0.5 - Mel} litro de Mel<br>`}
+        else {
+            `Sua produção está dentro da média em ${producaoMel} litro de Mel<br>`
+        }
+    }
+
+    if (Especie == `Espécie 4`){
+         if (Mel > 1.5 ){
+        div_mensagem.innerHTML += `Sua produção está acima da média em ${Mel - 4} litro de Mel<br>`}
+        else if (Mel < 0.5 ){
+         div_mensagem.innerHTML += `Sua produção está abaixo da média em ${2 - Mel} litro de Mel<br>`}
+        else {
+            `Sua produção está dentro da média em ${producaoMel} litro de Mel<br>`
+        }
+    }
+
+    if (Especie == `Espécie 5`){
+         if (Mel > 1.5 ){
+        div_mensagem.innerHTML += `Sua produção está acima da média em ${Mel - 3} litro de Mel<br>`}
+        else if (Mel < 0.5 ){
+         div_mensagem.innerHTML += `Sua produção está abaixo da média em ${1 - Mel} litro de Mel<br>`}
+        else {
+            `Sua produção está dentro da média em ${producaoMel} litro de Mel<br>`
+        }
+    }
+
+    if (Mel > 0){
+       div_mensagem.innerHTML += `O valor total da sua produção de mel é de R$${producaoMel}. <br>`
+    }
+
+    if (Cera > 0){
+        div_mensagem.innerHTML += `O valor total da sua produção de Cera é de R$${producaoCera}` 
+    }
+ }
+
+</script>
