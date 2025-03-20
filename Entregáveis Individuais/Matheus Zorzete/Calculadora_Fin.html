@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body>
+    <div id="div_msg">
+    Produção de mel total em mL
+    <input type="number" id="input_mel">mL
+    <br><br>
+    Valor do mel em reais
+    <input type="number" id="input_val">R$
+    <br><br>
+    <button onclick="calc()">Calcular</button>
+    </div>
+</body>
+</html>
+
+<script>
+
+    function calc(){
+
+        var mel = Number(input_mel.value) * 0.001;
+        var val = input_val.value;
+
+        var media_min = 17850 * 0.001;
+        var media_max = 21240 * 0.001;
+
+        var val_perda = (val * mel) * 0.4;
+        var val_total = val * mel;
+
+        var preju = (val_total - val_total) + val_perda; //Código XD
+        var triste = val_total - val_perda;
+        //25/30kg por ano / média / Uma colmeia
+        //Perda de 60% ano
+
+        var style1 = 'style = '
+
+        //https://www.infobeebr.com.br/noticias/clima-instavel-desorienta-abelhas-e-afeta-producao-de-mel-no-pais/
+
+        //div_msg.innerHTML = `A quantidade de mel ${mel} que as suas abelhas produzem nas ${col} colmeias, dá um total de ${val_perda} sem os sensores mas
+        //aumenta em ${val_total} caso tenha um devido cuidado com a colmeia.
+        div_msg.innerHTML=`As suas colmeias produzem, ao todo ${mel}L de mel, o valor total desse mel é igual a R$${val_total}. <br> Entretanto, com as variações de temperatura, 
+        um prejuízo e perda na produção de mel ocorre, onde a média de perda da produção de mel gira em torno de 60%. <br> Você pode sofrer até R$${preju} de prejuizos.
+        ficando com um lucro de apenas R$${triste}.`
+
+        if(mel < media_max){
+
+            if (mel > media_min){
+
+                div_msg.innerHTML += `<br> No seu caso, sua produção de mel está na média.`;
+
+            }if(mel < media_min){
+
+                div_msg.innerHTML += `<br> No seu caso, sua produção de mel foi abaixo da média`;
+
+            }
+
+        }if (mel > media_max){
+
+            div_msg.innerHTML += `<br> Parábens, sua produção de mel está acima da média`;
+
+        }
+        
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
