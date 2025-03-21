@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <B><I>CALCULADORA FINANCEIRA BEEAWARE</I></B>
+    <BR></BR>
+    Insira a temperatura média da colmeia (°C):
+    <br>
+    <input type="text" id="input_temp">
+    <BR></BR>
+    Informe a produção mensal de mel produzido por uma colmeia (Kg):
+    <br>
+    <input type="text" id="input_kg">
+    <BR></BR>
+    Informe o preço do Kg do mel (R$):
+    <br>
+    <input type="text" id="input_preco">
+    <BR></BR>
+
+
+    Selecione o período da análise:
+    <select id="select_período">
+        <option value="12">Anual</option>
+        <option value="6">Semestral</option>
+        <option value="3">Trimestral</option>
+
+    </select>
+    <BR></BR>
+
+    <button onclick="analisar()">Analisar cenários</button>
+    <BR></BR>
+    <div id="div_mensg"></div>
+</body>
+
+
+</html>
+<script>
+    function analisar() {
+
+        var peso = Number(input_kg.value)
+        var preço = Number(input_preco.value)
+        var temp = Number(input_temp.value)
+        var rendimento = (preço * peso)
+        var RendIdeal = rendimento * 1.36
+        var RendAbaixo = rendimento * 0.76
+        var RendAcima = rendimento * 0.88
+        var período = Number(select_período.value)
+        var select = ''
+
+        if (período == '12') {
+            select = 'Anual'
+        } else if (período == '6') {
+            select = 'Semestral'
+        } else {
+            select = 'Trimestral'
+        }
+
+       if (temp <= 19) {
+        div_mensg.innerHTML =
+        `<b><i style="color: DarkRed;">Sua produção:</i></b>
+        <br>
+        Temperatura: abaixo de 19°C 
+        <br>
+        Status produção: Perda total
+        <br>
+        Rendimento:<b style="color: DarkRed;"> R$: 00,0 </b>
+        <BR><BR>
+       Rendimento ${select}:<b style="color: DarkRed;"> R$: 00,0 </b>
+       <BR><BR>
+       <b><i style="color: DarkGreen;">Melhor cenário:</i></b>
+       <br>
+       Temperatura: entre 32°C a 36°C
+       <br>
+       Status produção: <b>Temperatura ideal</b>
+       <br>
+       Rendimento mensal: R$: ${rendimento}
+        `
+        }
+
+        else if (temp > 19 && temp <= 31) {
+        div_mensg.innerHTML =
+        `<b><i style="color: DarkOrange;">Atual produção:</i></b>
+        <br>
+        Temperatura: entre 19°C ~ 31°C 
+        <br>
+        Status produção: <b>Temperatura abaixo do ideal (prejuízo de até 24%)</b>
+        <br>
+        Rendimento mensal já com prejuízo: R$: ${rendimento}
+        <BR></BR>
+        <B><I>CENÁRIOS:</I></B>
+        <BR><BR>
+            
+        <b><i style="color: orange;"> 1) temperatura acima do ideal:</i></b>
+        <br>
+        Temperatura: entre 37°C ~ 39°C
+        <br>
+        Lucro mensal de até 12% (<b style="color: green"> R$: ${(rendimento * 1.12) - rendimento} </b>)
+        <br>
+        Lucratividade ${select}:  <b style="color: green"> R$: ${((rendimento * 1.12) - rendimento) * período} </b>
+        <BR></BR>
+        Rendimento total (mensal):<b style="color: green"> R$: ${rendimento * 1.12} </b> 
+        <BR><BR>
+
+        <b><i style="color: DarkGreen;"> 2) temperatura ideal:</i></b>
+        <br>
+        Temperatura: entre 32°C a 36°C
+        <br>
+        Lucro mensal de até 36% (<b style="color: green"> R$: ${RendIdeal - rendimento} </b>)
+        <br>
+        Lucratividade ${select}: <b style="color: green"> R$: ${(RendIdeal - rendimento) * período} </b>
+        <BR><BR>
+        Rendimento total (mensal):  <b style="color: green"> R$: ${RendIdeal} </b>
+        
+        `
+        }
+
+        else if (temp >= 32 && temp <= 36) {
+        div_mensg.innerHTML =
+        `<b><i style="color: DarkGreen;">Sua produção:</i></b>
+        <br>
+        Temperatura: entre 32°C a 36°C
+        <br>
+        Status produção: <b>Temperatura ideal</b>
+        <br>
+        Rendimento mensal: R$: ${rendimento}
+        <BR></BR>
+        <B><I>CENÁRIOS:</I></B>
+        <BR><BR>
+
+        <b><i style="color: orange;"> 1) temperatura acima do ideal:</i></b>
+        <br>
+        Temperatura: entre 37°C ~ 39°C
+        <br>
+        Prejuízo mensal de até 12% (<b style="color: red"> R$: ${rendimento - RendAcima}</b>)
+        <br>
+        Prejuízo ${select}: <b style="color: red"> R$: ${(rendimento - RendAcima) * período} </b>
+        <BR><BR>
+        Rendimento total (mensal): <b style="color: red"> R$: ${RendAcima} </b>
+        <BR><BR>
+
+        <b><i style="color: DarkOrange;"> 2) temperatura abaixo do ideal:</i></b>
+        <br>
+        Temperatura: entre 19°C ~ 31°C
+        <br>
+        Prejuízo mensal de até 24% (<b style="color: red"> R$: ${rendimento - RendAbaixo}</b>)
+        <br>
+        Prejuízo ${select}: <b style="color: red"> R$: ${(rendimento - RendAbaixo) * período} </b>
+        <BR><BR>
+        Rendimento total (mensal): <b style="color: red"> R$: ${RendAbaixo} </b>
+        `
+        }
+
+        else if (temp >= 37 && temp < 39) {
+        div_mensg.innerHTML =
+        `<b><i style="color: orange;">Sua produção:</i></b>
+        <br>
+        Temperatura: entre 37°C ~ 39°C
+        <br>
+        Status produção: <b>Temperatura acima do ideal (prejuízo de até 12%)</b>
+        <br>
+        Rendimento mensal já com prejuízo: R$: ${rendimento}
+        <BR></BR>
+        <B><I>CENÁRIOS:</I></B>
+        <BR><BR>
+
+        <b><i style="color: DarkOrange;"> 1) temperatura abaixo do ideal:</i></b>
+        <br>
+        Temperatura: entre 19°C ~ 31°C
+        <br>
+        Prejuízo mensal de até 24% (<b style="color: red"> R$: ${((rendimento * 0.88) - rendimento)* -1}</b>)
+        <br>
+        Prejuízo ${select}: <b style="color: red"> R$: ${(((rendimento * 0.88) - rendimento) * período)* -1} </b>
+        <BR></BR>
+        Rendimento total (mensal): <b style="color: red"> R$: ${rendimento * 0.88} </b>
+        <BR><BR>
+
+        <b><i style="color: DarkGreen;"> 2) temperatura ideal:</i></b>
+        <br>
+        Temperatura: entre 32°C a 36°C
+        <br>
+        Lucro mensal de até 36% (<b style="color: green"> R$:${RendIdeal - rendimento} </b>)
+        <br>
+        Lucratividade ${select}: <b style="color: green"> R$: ${(RendIdeal - rendimento) * período} </b>
+        <BR><BR>
+        Rendimento total (mensal):  <b style="color: green"> R$: ${RendIdeal} </b>
+        `
+        }
+        
+        else {
+        div_mensg.innerHTML =
+       `<b><i style="color: DarkRed;">Sua produção:</i></b>
+       <br>
+       Temperatura: acima de 39°C 
+       <br>
+       Status produção: <b>CCD (Colony Collapse Disorder)</b>
+       <br>
+       Rendimento:<b style="color: DarkRed;"> R$: 00,0 </b>
+       <BR><BR>
+       Rendimento ${select}:<b style="color: DarkRed;"> R$: 00,0 </b>
+       <BR><BR>
+       
+       <b><i style="color: DarkGreen;">Melhor cenário:</i></b>
+       <br>
+       Temperatura: entre 32°C a 36°C
+       <br>
+       Status produção: <b>Temperatura ideal</b>
+       <br>
+       Rendimento mensal: R$: ${rendimento}
+       <BR></BR>`
+       
+       
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
